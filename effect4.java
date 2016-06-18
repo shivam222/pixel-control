@@ -6,15 +6,12 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.*;
-import java.io.File;
-import javax.imageio.ImageIO;
+
 
 
 class effect1  
@@ -61,21 +58,19 @@ class effect1
 		field[3]=fl2;
 		
 		
-		
-		
-		for(k=0;k<4;k++)
+		/*for(k=0;k<4;k++)
 		{field[k].addKeyListener(new KeyAdapter() {
         public void keyTyped(KeyEvent e) {
-			 
+			                                                  NOT IN USE RIGHT NOW SO PASS OVER IT.
 			System.out.println(field[k].getText());
-           /* String text = field[k].getText();
+            String text = field[k].getText();
             int length = text.length();
             if (length ==4) {
                
           e.consume();
-            }*/
+            }
         
-		}});}
+		}});}*/
 		
 		
 		p2.add(red);
@@ -102,7 +97,7 @@ class effect1
         fc.setFileFilter(filter);
 		fr.add(fc);
 		
-	     int returnVal = fc.showOpenDialog(fr);          
+	    int returnVal = fc.showOpenDialog(fr);          
         if(returnVal == JFileChooser.APPROVE_OPTION)
 			{
 				
@@ -169,22 +164,9 @@ class effect1
                    // p1.add(imageLabel2);
                     imageLabel1.setVisible(true);					
             }
-			});	
+			});			
+			}}}
 			
-					  
-					  
-		
-            
-           	
-
-             				
-			
-             		
-				
-			}
-		
-	}
-}	
 	class effect4
 	{
 		public static void main(String str[])
