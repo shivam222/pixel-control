@@ -31,9 +31,11 @@ class effect1
 	JTextField fl2 =new JTextField();
 	int k;
 	JTextField[] field=new JTextField[4];
+	Checkbox cb1=new Checkbox("red",null,true);
+	Checkbox cb2=new Checkbox("green");
+	Checkbox cb3=new Checkbox("blue");
 	
-	   
-
+	
 	public effect1()
 	{
 		fr.setSize(1000,1000);
@@ -51,6 +53,9 @@ class effect1
 		p2.add(fl1);
 		p2.add(fl2);
 		p2.add(b1);
+		p2.add(cb1);
+		p2.add(cb2);
+		p2.add(cb3);
 		
 		field[0]=fr1;
 		field[1]=fr2;
@@ -110,14 +115,6 @@ class effect1
 				fr.setVisible(true);
 				
 				
-				BufferedImage work1 = new BufferedImage(
-                image.getIconWidth(),
-                image.getIconHeight(),
-                BufferedImage.TYPE_INT_RGB);
-                Graphics g = work1.createGraphics();
-                // paint the Icon to the BufferedImage.
-                image.paintIcon(null, g, 0,0);
-                g.dispose();
 				
 				
 
@@ -126,6 +123,15 @@ class effect1
             public void actionPerformed(ActionEvent e)
             {    
 				imageLabel1.setVisible(false);
+				
+				BufferedImage work1 = new BufferedImage(
+                image.getIconWidth(),
+                image.getIconHeight(),
+                BufferedImage.TYPE_INT_RGB);
+                Graphics g = work1.createGraphics();
+                // paint the Icon to the BufferedImage.
+                image.paintIcon(null, g, 0,0);
+                g.dispose();
 				
 				
                  int height=work1.getHeight();
@@ -148,14 +154,17 @@ class effect1
                         for(int j=co1;j<co2;j++)
                         {
                             Color c= new Color(work1.getRGB(j,i));
+							Color c2;
                             
-                                    
-                                          Color c2=new Color(red.getValue(),c.getGreen(),c.getGreen());
-                                          int co=c2.getRGB();  
-                                          work1.setRGB(j,i,co);
-                                    
-                           
-                            
+                           if(cb2.getState()){
+							   c2=new Color(c.getRed(),red.getValue(),c.getBlue());}
+						   else if(cb3.getState()){
+							    c2=new Color(c.getRed(),c.getGreen(),red.getValue());}
+                           else {
+							    c2=new Color(red.getValue(),c.getGreen(),c.getGreen());}										  
+                                          
+								int co=c2.getRGB();  
+                                work1.setRGB(j,i,co);
                         }
                     }
 					ImageIcon image2 = new ImageIcon(work1);
