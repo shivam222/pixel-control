@@ -11,7 +11,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-
+import java.io.*;
+import javax.imageio.*;
+import java.io.File;
 
 
 class effect1  
@@ -20,7 +22,8 @@ class effect1
 	JFrame fr=new JFrame();
 	JPanel p1=new JPanel();
     JPanel p2=new JPanel();
-	JButton b1=new JButton("enter");
+	JButton b1=new JButton("see effect.");
+	JButton b5=new JButton("save it.");
    	JLabel imageLabel1 = new JLabel();
 	JSlider red=new JSlider(0,250,100);
 	JLabel l1=new JLabel("range of row--");
@@ -34,7 +37,7 @@ class effect1
 	Checkbox cb1=new Checkbox("red",null,true);
 	Checkbox cb2=new Checkbox("green");
 	Checkbox cb3=new Checkbox("blue");
-	
+	BufferedImage work1;
 	
 	public effect1()
 	{
@@ -52,15 +55,18 @@ class effect1
 		p2.add(l2);
 		p2.add(fl1);
 		p2.add(fl2);
+		p2.add(red);
 		p2.add(b1);
 		p2.add(cb1);
 		p2.add(cb2);
 		p2.add(cb3);
+		p2.add(b5);
 		
 		field[0]=fr1;
 		field[1]=fr2;
 		field[2]=fl1;
 		field[3]=fl2;
+		
 		
 		
 		/*for(k=0;k<4;k++)
@@ -78,7 +84,7 @@ class effect1
 		}});}*/
 		
 		
-		p2.add(red);
+		
 		
 		
 		red.setMinorTickSpacing(10);
@@ -124,7 +130,7 @@ class effect1
             {    
 				imageLabel1.setVisible(false);
 				
-				BufferedImage work1 = new BufferedImage(
+				 work1 = new BufferedImage(
                 image.getIconWidth(),
                 image.getIconHeight(),
                 BufferedImage.TYPE_INT_RGB);
@@ -173,7 +179,20 @@ class effect1
                    // p1.add(imageLabel2);
                     imageLabel1.setVisible(true);					
             }
-			});			
+			});
+
+           b5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+			{
+                 try{
+				    File output= new File("work1.jpg");
+                    ImageIO.write(work1,"jpg",output);
+			         }
+				catch(Exception e2)
+			          {  }	
+			  
+			
+			}});			
 			}}}
 			
 	class effect4
