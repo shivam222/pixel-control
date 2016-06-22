@@ -115,16 +115,19 @@ class effect1
                 ImageIcon image = new ImageIcon(fc.getSelectedFile().getAbsolutePath());
 				
                 imageLabel1.setIcon(image);
-                 				
+				
+                int widic=image.getIconWidth();
+                int heiic=image.getIconHeight();
+                if(widic>1000 ||heiic>600)
+				{ 
+			    System.out.println("Hey Boy This Image Is Bigger Then My Container.Try with a small one.");
+			    System.exit(1);
+				}					
                 p1.add(imageLabel1);
 			    imageLabel1.setVisible(true);
 				fr.setVisible(true);
 				
-				
-				
-				
-
-			 b1.addActionListener(new ActionListener() {
+		    b1.addActionListener(new ActionListener() {
  
             public void actionPerformed(ActionEvent e)
             {    
@@ -163,11 +166,14 @@ class effect1
 							Color c2;
                             
                            if(cb2.getState()){
-							   c2=new Color(c.getRed(),red.getValue(),c.getBlue());}
+							    c2=new Color(c.getRed(),red.getValue(),c.getBlue());}
 						   else if(cb3.getState()){
 							    c2=new Color(c.getRed(),c.getGreen(),red.getValue());}
-                           else {
-							    c2=new Color(red.getValue(),c.getGreen(),c.getGreen());}										  
+                           else if(cb1.getState()){
+							    c2=new Color(red.getValue(),c.getGreen(),c.getBlue());}	
+                            else{
+								c2=new Color(c.getRed(),c.getGreen(),c.getBlue());}
+															
                                           
 								int co=c2.getRGB();  
                                 work1.setRGB(j,i,co);
