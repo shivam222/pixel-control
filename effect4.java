@@ -49,6 +49,8 @@ class effect1
 	JTextField f15 =new JTextField();
 	JTextField f16 =new JTextField();
 	JButton b7=new JButton("Watch it.");
+	Checkbox below=new Checkbox("below this range");
+
 	
 	
 	public effect1()
@@ -234,6 +236,7 @@ class effect1
 					p2.add(f15);
 					p2.add(f16);
 					p2.add(b7);
+					p2.add(below);
 				  
 			  }
 		  });
@@ -269,12 +272,23 @@ class effect1
 						{
 							Color pitch = new Color(work2.getRGB(d,v));
 							Color pitch2;
+							if(!(below.getState())){
 							if(pitch.getRed()>=f11v&&pitch.getGreen()>=f12v&&pitch.getBlue()>=f13v)
 							{
 								pitch2=new Color(f14v,f15v,f16v);
 							}
 							else{
 								pitch2=new Color(pitch.getRed(),pitch.getGreen(),pitch.getBlue());
+							}
+							}
+							else{
+							if(pitch.getRed()<=f11v&&pitch.getGreen()<=f12v&&pitch.getBlue()<=f13v)
+							{
+								pitch2=new Color(f14v,f15v,f16v);
+							}
+							else{
+								pitch2=new Color(pitch.getRed(),pitch.getGreen(),pitch.getBlue());
+							}	
 							}
 							int pitcher=pitch2.getRGB();
 							work2.setRGB(d,v,pitcher);
