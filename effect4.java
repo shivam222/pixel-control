@@ -24,7 +24,8 @@ class effect1
     JPanel p2=new JPanel();
 	JButton b1=new JButton("see effect.");
 	JButton b5=new JButton("save it.");
-   	JLabel imageLabel1 = new JLabel();
+	JButton b2=new JButton("create your own");
+    JLabel imageLabel1 = new JLabel();
 	JSlider red=new JSlider(0,250,100);
 	JLabel l1=new JLabel("range of row--");
 	JTextField fr1 =new JTextField();
@@ -32,12 +33,23 @@ class effect1
 	JLabel l2=new JLabel("range of column--");
 	JTextField fl1 =new JTextField();
 	JTextField fl2 =new JTextField();
-	int k;
+	int k,widic,heiic;
 	JTextField[] field=new JTextField[4];
 	Checkbox cb1=new Checkbox("red",null,true);
 	Checkbox cb2=new Checkbox("green");
 	Checkbox cb3=new Checkbox("blue");
-	BufferedImage work1;
+	BufferedImage work1,work2;
+	//create your own elements//
+	JLabel l3=new JLabel("range of color to be converted--");
+	JLabel l4=new JLabel("color");
+	JTextField f11 =new JTextField();
+	JTextField f12 =new JTextField();
+	JTextField f13 =new JTextField();
+	JTextField f14 =new JTextField();
+	JTextField f15 =new JTextField();
+	JTextField f16 =new JTextField();
+	JButton b7=new JButton("Watch it.");
+	
 	
 	public effect1()
 	{
@@ -61,6 +73,9 @@ class effect1
 		p2.add(cb2);
 		p2.add(cb3);
 		p2.add(b5);
+		p2.add(b2);
+		//create your own elements.//
+		
 		
 		field[0]=fr1;
 		field[1]=fr2;
@@ -116,8 +131,8 @@ class effect1
 				
                 imageLabel1.setIcon(image);
 				
-                int widic=image.getIconWidth();
-                int heiic=image.getIconHeight();
+                 widic=image.getIconWidth();
+                 heiic=image.getIconHeight();
                 if(widic>1000 ||heiic>600)
 				{ 
 			    System.out.println("Hey Boy This Image Is Bigger Then My Container.Try with a small one.");
@@ -126,6 +141,8 @@ class effect1
                 p1.add(imageLabel1);
 			    imageLabel1.setVisible(true);
 				fr.setVisible(true);
+				
+				
 				
 		    b1.addActionListener(new ActionListener() {
  
@@ -198,7 +215,77 @@ class effect1
 			          {  }	
 			  
 			
-			}});			
+			}});
+
+
+
+          b2.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent e)
+			  {
+				 
+				    p2.removeAll();
+                    p2.revalidate();
+					p2.add(l3);
+					p2.add(f11);
+					p2.add(f12);
+					p2.add(f13);
+					p2.add(l4);
+					p2.add(f14);
+					p2.add(f15);
+					p2.add(f16);
+					p2.add(b7);
+				  
+			  }
+		  });
+		  b7.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent e)
+			  {
+				    work2 = new BufferedImage(
+                    image.getIconWidth(),
+                    image.getIconHeight(),
+                    BufferedImage.TYPE_INT_RGB);
+                    Graphics g = work2.createGraphics();
+                    // paint the Icon to the BufferedImage.
+                    image.paintIcon(null, g, 0,0);
+                    g.dispose();
+				    imageLabel1.setIcon(null);
+                    imageLabel1.revalidate();
+					String s1=f11.getText();
+					String s2=f12.getText();
+					String s3=f13.getText();
+					String s4=f14.getText();
+					String s5=f15.getText();
+					String s6=f16.getText();
+					Integer f11v=Integer.valueOf(s1);
+					Integer f12v=Integer.valueOf(s2);
+					Integer f13v=Integer.valueOf(s3);
+					Integer f14v=Integer.valueOf(s4);
+					Integer f15v=Integer.valueOf(s5);
+					Integer f16v=Integer.valueOf(s6);
+
+					for(int v=0;v<heiic;v++)
+					{
+						for(int d=0;d<widic;d++)
+						{
+							Color pitch = new Color(work2.getRGB(d,v));
+							Color pitch2;
+							if(pitch.getRed()>=f11v&&pitch.getGreen()>=f12v&&pitch.getBlue()>=f13v)
+							{
+								pitch2=new Color(f14v,f15v,f16v);
+							}
+							else{
+								pitch2=new Color(pitch.getRed(),pitch.getGreen(),pitch.getBlue());
+							}
+							int pitcher=pitch2.getRGB();
+							work2.setRGB(d,v,pitcher);
+						}
+					}
+					ImageIcon image3 = new ImageIcon(work2);
+					imageLabel1.setIcon(image3);
+				   
+		   }
+		  });
+			
 			}}}
 			
 	class effect4
