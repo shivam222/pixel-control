@@ -49,6 +49,7 @@ class effect1
 	JTextField f15 =new JTextField();
 	JTextField f16 =new JTextField();
 	JButton b7=new JButton("Watch it.");
+	JButton b8=new JButton("save it");
 	Checkbox below=new Checkbox("below this range");
 
 	
@@ -218,6 +219,18 @@ class effect1
 			  
 			
 			}});
+			b8.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+			{
+                 try{
+				    File output= new File("work2.jpg");
+                    ImageIO.write(work2,"jpg",output);
+			         }
+				catch(Exception e2)
+			          {  }	
+			  
+			
+			}});
 
 
 
@@ -236,6 +249,7 @@ class effect1
 					p2.add(f15);
 					p2.add(f16);
 					p2.add(b7);
+					p2.add(b8);
 					p2.add(below);
 				  
 			  }
