@@ -85,24 +85,7 @@ class effect1
 		field[2]=fl1;
 		field[3]=fl2;
 		
-		
-		
-		/*for(k=0;k<4;k++)
-		{field[k].addKeyListener(new KeyAdapter() {
-        public void keyTyped(KeyEvent e) {
-			                                                  NOT IN USE RIGHT NOW SO PASS OVER IT.
-			System.out.println(field[k].getText());
-            String text = field[k].getText();
-            int length = text.length();
-            if (length ==4) {
-               
-          e.consume();
-            }
-        
-		}});}*/
-		
-		
-		
+	
 		
 		
 		red.setMinorTickSpacing(10);
