@@ -22,8 +22,8 @@ class effect1
 	JFrame fr=new JFrame();
 	JPanel p1=new JPanel();
     JPanel p2=new JPanel();
-	JButton b1=new JButton("see effect.");
-	JButton b5=new JButton("save it.");
+	JButton b1=new JButton("see effect");
+	JButton b5=new JButton("save");
 	JButton b2=new JButton("create your own");
     JLabel imageLabel1 = new JLabel();
 	JSlider red=new JSlider(0,250,100);
@@ -48,8 +48,8 @@ class effect1
 	JTextField f14 =new JTextField();
 	JTextField f15 =new JTextField();
 	JTextField f16 =new JTextField();
-	JButton b7=new JButton("Watch it.");
-	JButton b8=new JButton("save it");
+	JButton b7=new JButton("Watch");
+	JButton b8=new JButton("save");
 	Checkbox below=new Checkbox("below this range");
 
 	
