@@ -25,6 +25,7 @@ class effect1
 	JButton b1=new JButton("see effect");
 	JButton b5=new JButton("save");
 	JButton b2=new JButton("create your own");
+	JButton b9=new JButton("scale half");
     JLabel imageLabel1 = new JLabel();
 	JSlider red=new JSlider(0,250,100);
 	JLabel l1=new JLabel("range of row--");
@@ -38,7 +39,9 @@ class effect1
 	Checkbox cb1=new Checkbox("red",null,true);
 	Checkbox cb2=new Checkbox("green");
 	Checkbox cb3=new Checkbox("blue");
-	BufferedImage work1,work2;
+	BufferedImage work1,work2,workResize;
+	int IMG_HEIGHT,IMG_WIDTH,height2,width2;
+                     
 	//create your own elements//
 	JLabel l3=new JLabel("range of color to be converted--");
 	JLabel l4=new JLabel("color");
@@ -77,6 +80,7 @@ class effect1
 		p2.add(cb3);
 		p2.add(b5);
 		p2.add(b2);
+		p2.add(b9);
 		//create your own elements.//
 		
 		
@@ -127,6 +131,35 @@ class effect1
                 p1.add(imageLabel1);
 			    imageLabel1.setVisible(true);
 				fr.setVisible(true);
+				
+			b9.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					imageLabel1.setVisible(false);
+					 work1 = new BufferedImage(
+                     image.getIconWidth(),
+                     image.getIconHeight(),
+                     BufferedImage.TYPE_INT_RGB);
+                     Graphics g = work1.createGraphics();
+                     // paint the Icon to the BufferedImage.
+                     image.paintIcon(null, g, 0,0);
+                      g.dispose();
+					  height2=work1.getHeight();
+                      width2=work1.getWidth();
+					  IMG_HEIGHT=height2/2;
+                      IMG_WIDTH=width2/2;					  
+					  //code snippet for resizing
+					 
+					  int type = work1.getType() == 0? BufferedImage.TYPE_INT_ARGB : work1.getType();
+			           workResize = resizeImage(work1, type,IMG_WIDTH,IMG_HEIGHT);
+		              
+					  ImageIcon imageResize = new ImageIcon(workResize);
+					  imageLabel1.setIcon(imageResize);
+                      imageLabel1.setVisible(true);
+		
+	
+					
+				}
+			});
 				
 				
 				
@@ -297,7 +330,17 @@ class effect1
 		   }
 		  });
 			
-			}}}
+			}}
+						  
+					  //defining function resize image.
+					  private static BufferedImage resizeImage(BufferedImage work1, int type,int w,int h){
+	                  BufferedImage resizedImage = new BufferedImage(w,h, type);
+	                  Graphics g = resizedImage.createGraphics();
+	                  g.drawImage(work1, 0, 0, w, h, null);
+	                  g.dispose();
+		              return resizedImage;
+    }
+	}
 			
 	class effect4
 	{
