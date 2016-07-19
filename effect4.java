@@ -78,7 +78,7 @@ class effect1
 		p2.add(cb1);
 		p2.add(cb2);
 		p2.add(cb3);
-		p2.add(b5);
+        p2.add(b5);
 		p2.add(b2);
 		p2.add(b9);
 		//create your own elements.//
@@ -97,8 +97,7 @@ class effect1
 		red.setPaintTicks(true);
 		red.setPaintLabels(true);
 		
-		
-		
+		p2.setPreferredSize(new Dimension(50,150));		
 		fr.add(p1,BorderLayout.NORTH);
 	    fr.add(p2,BorderLayout.SOUTH);
 
