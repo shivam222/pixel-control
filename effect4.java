@@ -26,6 +26,7 @@ class effect1
 	JButton b5=new JButton("save");
 	JButton b2=new JButton("create your own");
 	JButton b9=new JButton("scale half");
+	JButton b10=new JButton("ThresHolding");
     JLabel imageLabel1 = new JLabel();
 	JSlider red=new JSlider(0,250,100);
 	JLabel l1=new JLabel("range of row--");
@@ -80,6 +81,7 @@ class effect1
 		p2.add(cb3);
         p2.add(b5);
 		p2.add(b2);
+		p2.add(b10);
 		p2.add(b9);
 		//create your own elements.//
 		
@@ -220,6 +222,56 @@ class effect1
                    // p1.add(imageLabel2);
                     imageLabel1.setVisible(true);					
             }
+			});
+			
+			b10.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					imageLabel1.setVisible(false);
+					 work1 = new BufferedImage(
+                     image.getIconWidth(),
+                     image.getIconHeight(),
+                     BufferedImage.TYPE_INT_RGB);
+                     Graphics g = work1.createGraphics();
+                     // paint the Icon to the BufferedImage.
+                     image.paintIcon(null, g, 0,0);
+                      g.dispose();
+					  height2=work1.getHeight();
+                      width2=work1.getWidth();					  
+					  //code snippet for thresholding.
+					  for(int i=0;i<height2;i++)
+                    {
+                        for(int j=0;j<width2;j++)
+                        {
+                            Color c= new Color(work1.getRGB(j,i));
+							Color c2;
+                            
+                           if(c.getRed()>=127&&c.getBlue()>=127&&c.getGreen()>=127){
+							   c2=new Color(255,255,255);
+						   }
+						  else if(c.getRed()>=127&&c.getBlue()>=127&&c.getGreen()<127){
+							   c2=new Color(255,255,255);
+						   }
+						   else if(c.getRed()>=127&&c.getBlue()<127&&c.getGreen()>=127){
+							   c2=new Color(255,255,255);
+						   }
+						  else if(c.getRed()<127&&c.getBlue()>=127&&c.getGreen()>=127){
+							   c2=new Color(255,255,255);
+						   }
+						   else{
+							     c2=new Color(0,0,0);
+						   }
+						  
+						   int cx=c2.getRGB();
+						   work1.setRGB(j,i,cx);
+						   
+                        }
+                    }
+					ImageIcon image2 = new ImageIcon(work1);
+                    imageLabel1.setIcon(image2);
+					
+                    imageLabel1.setVisible(true);
+					
+				}
 			});
 
            b5.addActionListener(new ActionListener() {
