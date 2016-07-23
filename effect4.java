@@ -110,7 +110,7 @@ class effect1
 		JFileChooser fc=new JFileChooser();
 		fc.setCurrentDirectory(new java.io.File("E:/zayn"));
 		fc.setDialogTitle("Choose your Image");
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif");
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF & png Images", "jpg", "gif","png");
         fc.setFileFilter(filter);
 		fr.add(fc);
 		
