@@ -85,16 +85,12 @@ class effect1
 		p2.add(b9);
 		//create your own elements.//
 		
-		
-		field[0]=fr1;
+	    field[0]=fr1;
 		field[1]=fr2;
 		field[2]=fl1;
 		field[3]=fl2;
 		
-	
-		
-		
-		red.setMinorTickSpacing(10);
+	    red.setMinorTickSpacing(10);
 		red.setMajorTickSpacing(50);
 		red.setPaintTicks(true);
 		red.setPaintLabels(true);
@@ -157,8 +153,6 @@ class effect1
 					  imageLabel1.setIcon(imageResize);
                       imageLabel1.setVisible(true);
 		
-	
-					
 				}
 			});
 				
@@ -283,9 +277,7 @@ class effect1
 			         }
 				catch(Exception e2)
 			          {  }	
-			  
-			
-			}});
+			  }});
 			b8.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
 			{
@@ -295,14 +287,11 @@ class effect1
 			         }
 				catch(Exception e2)
 			          {  }	
-			  
-			
-			}});
+			  }});
 
           b2.addActionListener(new ActionListener(){
 			  public void actionPerformed(ActionEvent e)
 			  {
-				 
 				    p2.removeAll();
                     p2.revalidate();
 					p2.add(l3);
